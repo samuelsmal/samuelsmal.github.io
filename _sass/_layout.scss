@@ -1,0 +1,105 @@
+// sticky footer
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+.footer, .push {
+  height: 4em;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none; padding-left: 0;
+
+  .post-list-item {
+    display: flex;
+    flex-direction: row;
+
+    .left {
+      @media only screen and (min-width: 600px) {
+          min-width: 13ch;
+          max-width: 13ch;
+          width: 13ch;
+      }
+      //text-align: right;
+    }
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+
+      .left {
+        text-align: left;
+
+      }
+    }
+  }
+
+  .post-description {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+}
+
+.tag-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .tag-list-item {
+    display: inline;
+    font-size: 0.9rem;
+  }
+
+  .tag-list-item::after {
+    content: ",";
+    margin: 0;
+    padding: 0;
+  }
+
+  .tag-list-item:last-child:after {
+    content: none;
+  }
+}
+
+.post-by-field-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post {
+  counter-reset: rule-counter 0;
+
+  .rule {
+    blockquote::before {
+      content: "Rule " counters(rule-counter, ".") "";
+
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+
+  .rule:not(.rule-extension) {
+    blockquote::before {
+      counter-increment: rule-counter;
+    }
+  }
+
+  .rule {
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    blockquote {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+  }
+}
