@@ -16,10 +16,12 @@ field: software engineering
 
 ## Introduction
 
-As a general classification there are two types of timestamps: **processing** and **event** timestamps.
-Often times the difference between the two types is not clear and depends heavily on the use case.
+In a distributed queue-based messaging system each message is usually accompanied by two timestamps:
+ the **processing** and the **event** timestamp. This is often referred to as a **bitemporal data**.
+Oftentimes the difference between the two types is not clear and depends heavily on the use case.
+And we will see how it should really be a **polytemporal data** in the conclusion.
 
-Assume the following system:
+For the sake of argument we'll consider the following system:
 
 ```
 Sensor System -> Queue  -> Processor -> Database -> UI
@@ -33,20 +35,54 @@ Temperature sensor -> Kafka -> Flink -> PostgreSQL -> HTML webapp
 
 ## About timestamps
 
+There a many different *types* of timestamps:
+
+<dl>
+  <dt>Observation or event time</dt>
+  <dd>When a data product becomes aware of the event or state. This is the point in time where an
+  actual thing happened.</dd>
+
+  <dt>Processing time</dt>
+  <dd>When the data product processes and transforms the data observed.</dd>
+
+  <dt>Record time</dt>
+  <dd>When a data product stores the processed data.</dd>
+
+  <dt>Publish time</dt>
+  <dd>When the data becomes available to data users for access.</dd>
+
+  <dt>Arrival time</dt>
+  <dd>When the data arrives at the data user.</dd>
+</dl>
+
+As you can see the *type* of the timestamp depends on the user's viewpoint. For our sensor the
+$t_\text{observation}$ and $t_\text{processing}$ are the same. The $t_\text{publish}$ is the
+timestamp when it sends the data off. It then arrives at the sink, in this case our Queue. The Queue
+than adds it's own $t_\text{arrival}$ and $t_\text{processing}$. Basically each new system adds a
+couple of timestamps to the message, the $t\text{event}$ however is very unique. It is the only
+timestamp that reflects the actual event. When did we measure this? When did it started to rain?
+
+---
+
 When a record arrives in your favourite distributed message queue system <label
 for="sn-message_queue_system" class="margin-toggle sidenote-number"></label><input type="checkbox"
 id="sn-message_queue_system" class="margin-toggle"/><span class="sidenote">
 I am abusing the term here a bit, I mean a system that distributed messages or records. For example
-Kafka, RabbitMQ or EventHub. A message or record in these system is a single piece of data, both
+Kafka, RabbitMQ or EventHub. A message or record in these systems is a single piece of data, both
 names are valid.</span>
-(so not EventHub), the arrival timestamp `arrived_at` is for the Queue a processing-timestamp. For
-the Processor however it can be a event-timestamp as well.
+, the arrival timestamp `arrived_at` is for the Queue a processing-timestamp. For
+the Processor however it can be an event-timestamp as well.
 
+Canonically people give these timestamps the following description:
+
+---
+
+Let's use these timestamps now in an example which illustrates their uses.
 
 For example, assume that we want to determine if the temperature is above a certain threshold. The
 sensor sends you the current measurement and the corresponding time it took it every second. You
 also don't need to react too quickly and know that the sensors can take false measurements, let's
-say that 1% of all measurements are faulty.  Thus you need filter the measurements, remove some
+say that 1% of all measurements are faulty.  Thus you need to filter the measurements, remove some
 outliers, as you don't know which measurements are faulty you just calculate the median over the
 last 60 measurements. Let's just assume that this is a valid approach for your application. It can
 deal with outliers, and the reaction delay is about 120 seconds. Which is deemed to be sufficient.
@@ -74,12 +110,14 @@ happens if no further measurement arrives? Or if they arrive after the wait-time
 have a $t_{event}$ that is still in our window?
 
 There is sadly no design solution for this issue, you can't completely design networking issues
-away. Thus you need to be your pipeline robust against these issues and configure it properly.
-Usually you only have two options: wait a bit or publish a new value.
-If you want to wait you have to determine what an acceptable wait time is, this makes your system
-even more delayed, more error-prone but you only have to deal with the outcome once.
-If you can recalculate past windows your pipeline further down needs to be able to handle this, your
-memory footprint is also much higher, as you now need to keep past windows in memory (or storage).
+away. Sometimes it's not fully in your control, e.g. when you have multiple vendors from
+multiple changing locations. Thus you need to make your pipeline robust against these issues and
+design and configure it properly.  Usually you only have two options: wait a bit or publish a new
+value.  If you want to wait you have to determine what an acceptable wait time is, this makes your
+system even more delayed, more error-prone but you only have to deal with the outcome once.  If you
+can recalculate past or already closed windows your pipeline further down needs to be able to handle
+this, your memory footprint is also much higher, as you now need to keep past windows in memory (or
+storage).
 
 Usually it's a combination of both approaches. Recalculate past windows for $x$-hours or $y$-seconds
 depending on how much money you want to spend on machines and if new messages arrive after this
@@ -92,33 +130,33 @@ Let's talk about the other big issue: Records arriving out-of-order. In this sim
 where we take the global aggregate over a window the order inside these windows can be neglected,
 the median is still the same.
 
-So let's assume that your sensor has a way of identifying when it made a wrong measurements. It now
-sends the following message:
+So let's assume that your sensor has a way of identifying if it made a wrong measurement and can
+correct previous values. It now sends the following update message:
 
 ```
 {
+ "id": 1
  "timestamp": 123,
  "value": 42,
- "id": 1
 }
 ```
 
-If it determined that a measurement is fault it will send the corrected `value` but keep the old
-`id` and `timestamp`. Let's assume that our Processor can recalculate the values for older windows
-if a message arrives out-of-window, and that we know get for some measurements more than one value.
-How do we determine which to use? If we pick the one with later $t_{\text{processor arrival}}$ we do
-not cover out-of-order events, e.g. in case of a distributed system it can happen that the corrected
-value arrives before the original, faulty one.
+If the sensor determines that a measurement is faulty, a corrected `value` will be sent, keeping the
+old `id` and `timestamp`. Let's assume that our Processor can recalculate the values for older
+windows if a message arrives out-of-window, and that we now get for some measurements more than one
+value.  How do we determine which to use? If we pick the one with later $t_\text{processor
+arrival}$ we do not cover out-of-order events, e.g. in case of a distributed system it can happen
+that the corrected value arrives before the original, faulty one.
 
 Thus you need to be able to restore order, or be able to determine which is the most-current value.
 Thus you further modify the sensor message:
 
 ```
 {
+ "id": 1
  "measurement_timestamp": 123,
  "send_timestamp": 133,
  "value": 32,
- "id": 1
 }
 ```
 
@@ -127,16 +165,16 @@ issues.
 
 ## Thoughts on monitoring
 
-As you can see the more we think about the issues that we are facing the more timestamps do we need
-to add to our system. We started with one for each system, but had to expand the $t_\text{event}$
-and add $t_\text{sensor send}$, I guess by now you can guess that in order to fully capture
-everything we need to add even more timestamps.
+As you can see the more we think about the issues that we are facing the more timestamps are
+required to fully debug your application. We started with one for each system, but had to expand the
+$t_\text{event}$ and add $t_\text{sensor send}$, I guess by now you can guess that in order to fully
+capture everything we need to add even more timestamps.
 Let's say you want to monitor the behaviour of your system and create an alert if it takes too long
 for some messages to flow through your system. For this you need to add for each subsystem that you
 have at least two instead of one timestamp: one for when it arrives and one when it leaves the
-subsystem. With this you can now calculate for each record the time it takes to process it and long
-it stays in transit from one subsystem to the other.
-To makes things worse, this only works very well when you have a simple one-to-one transformation
+subsystem. With this you can now calculate for each record the time it takes to process it and how
+long it stays in transit from one subsystem to the other.
+To make things worse, this only works very well when you have a simple one-to-one transformation
 or map steps. Taking the aggregation over 60 seconds from above, which timestamp should you use for
 arrival and leave? As long as everybody that uses the system is in agreement the earliest and latest
 should give you sufficient information. But should it be the earliest of the $t_\text{event}$ or

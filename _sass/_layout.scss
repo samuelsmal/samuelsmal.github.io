@@ -76,30 +76,45 @@ html, body {
 }
 
 .post {
-  counter-reset: rule-counter 0;
-
-  .rule {
-    blockquote::before {
-      content: "Rule " counters(rule-counter, ".") "";
-
-      font-style: normal;
-      font-weight: bold;
+  .post-header {
+    .published-on {
+      color: lighten(#111, 50%);
     }
   }
 
-  .rule:not(.rule-extension) {
-    blockquote::before {
-      counter-increment: rule-counter;
+  .post-content {
+    counter-reset: rule-counter 0;
+
+    .rule {
+      blockquote::before {
+        content: "Rule " counters(rule-counter, ".") "";
+
+        font-style: normal;
+        font-weight: bold;
+      }
     }
-  }
 
-  .rule {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    .rule:not(.rule-extension) {
+      blockquote::before {
+        counter-increment: rule-counter;
+      }
+    }
 
-    blockquote {
+    .rule {
       margin-top: 1em;
       margin-bottom: 1em;
+
+      blockquote {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
     }
+
+  }
+
+  dt {
+    font-weight: bold;
   }
 }
+
+

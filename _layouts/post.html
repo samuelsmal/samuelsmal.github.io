@@ -1,10 +1,20 @@
 ---
 layout: base
 ---
-<h1>{{ page.title }}</h1>
-{% if page.subtitle %}
-    <p class="subtitle">{{ page.subtitle }}</p>
-{% endif %}
-<section class="post">
+
+<div class="post">
+
+<header class="post-header">
+  <h1>{{ page.title }}</h1>
+  {% if page.subtitle %}
+      <p class="subtitle">{{ page.subtitle }}</p>
+  {% endif %}
+  <span class="published-on">
+    Published on: {{ page.date | date: "%Y-%m-%d" }}
+  </span>
+</header>
+<section class="post-content">
   {{ content }}
 </section>
+
+</div>
