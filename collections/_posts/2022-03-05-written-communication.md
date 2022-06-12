@@ -76,7 +76,12 @@ If you're contacting them for the first time, give a brief introduction on who y
   </blockquote>
 </div>
 
-Onto the content, what do you want to convey? Hopefully this is a single thing. Grouping multiple
+---
+
+Onto the content. The following rules are somewhat overlapping and touch the same thing over and
+over again. Try to incorporate them all.
+
+What do you want to convey? Hopefully this is a single thing. Grouping multiple
 things into one message will make the written conversation more difficult. The question is what is
 this *thing*? In general this depends if you want to give or receive something. I want to find out
 why something didn't work, this something and the question about it are the single *thing*. If it's
@@ -107,8 +112,8 @@ People don't like thinking for themselves, they like to think that they do, but 
 provide some helpers. Make the message actionable and super clear. You want some feedback on some
 design, ask for it! And if you don't include the deadline it will not happen within your desired
 time frame, be open and frank about this. "Please provide any feedback on this by the end of the
-week, if this doesn't work let me know beforehand". That way you give a clear deadline and some
-flexibility, you will work on the feedback by the middle of the week after anyway.
+week, if you're not able to do so please let me know beforehand". That way you give a clear deadline
+and some flexibility, you will work on the feedback by the middle of the week after anyway.
 
 <div class="epigraph rule">
   <blockquote>
@@ -118,6 +123,46 @@ Messages should be actionable. Include the what, the (until) when [and the how].
   </blockquote>
 </div>
 
+The above rule is only indicative of what the content should be, the next rule touches the
+structure. I prefer to start with the conclusion - where applicable. Everybody gets a lot of emails
+so try to show some empathy and structure your email in such a way that people can start skimming or
+stop reading altogether. People call this the *Minto Pyramid* or *BLUF, bottom line up front*, you
+start with the conclusion, followed by the key arguments and lastly come the supporting points with
+detailed information. I would use this structure when writing a design proposal, work plan, analysis
+of some data, ... I wouldn't use it where I want to force people to read the whole thing and where
+there is no clear indication on how to move forward.
+
+<div class="epigraph rule">
+  <blockquote>
+    <p>
+    Structure your message accordingly. Use BLUF, a.k.a. Minto Pyramid whereever you can.
+    </p>
+  </blockquote>
+</div>
+
+Each message should try to provide answers to the *Five W's*: Who, What, Where, When, and
+Why. The above rule expands this a bit, you could view it more like *What?* followed by *"So what?*.
+If it has a military vibe for you then you are correct.<label
+for="sn-message_kabir" class="margin-toggle sidenote-number"></label><input type="checkbox"
+id="sn-message_kabir" class="margin-toggle"/><span class="sidenote">
+  <a href="https://hbr.org/2016/11/how-to-write-email-with-military-precision">Kabir Sehgal wrote a similar post in the Harward Business Report</a>,
+  and gives three main ways to format emails with military precision: 
+    1) Subject with key words - Key words specify the nature in email (e.g. Action, Sign, Info, Decision, etc.);
+    2) Bottom Line Up Front (BLUF) - Emails should be short that basically answers the 5W's: who, what, when, where, and why;
+    3) Be Economical - short enough to understand and covey all the details. Using of Active voice is highly mandates rather than using passive voice.
+</span>
+The idea is that this touches the issue from all sides. It can of course be that one of the W's is
+not applicable.
+
+<div class="epigraph rule">
+  <blockquote>
+    <p>
+    Try to answer the Five W's: Who, What, Where, When, and Why.
+    </p>
+  </blockquote>
+</div>
+
+---
 
 Onto style. This is more of a personal preference. If there are lists I use a number before each
 item and not bullets if I think there will some sort of back-and-forth. It's much easier to

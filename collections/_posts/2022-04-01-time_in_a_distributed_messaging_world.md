@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "About time in the distributed messaging world"
-subtitle:
 date:   2022-06-01
 tags:
   - real-time data distribution
