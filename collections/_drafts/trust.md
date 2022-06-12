@@ -4,7 +4,7 @@ title:  "Trust"
 date:   2022-04-21
 tags:
   - leadership
-field: leadership
+field: Leadership
 ---
 
 All about trust

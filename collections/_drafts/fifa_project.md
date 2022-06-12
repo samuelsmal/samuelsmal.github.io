@@ -5,7 +5,7 @@ date:   2022-04-01
 tags:
   - software engineering
   - project management
-field: project management
+field: Project Management
 ---
 
 In this series of posts I want to highlight certain views or thoughts that trouble me. Usually these

@@ -7,7 +7,7 @@ tags:
   - neuroscience
 description: |
   Basically some notes on how to ferment stuff.
-field: neuroscience
+field: Neuroscience
 ---
 
 https://www.quantamagazine.org/artificial-neural-nets-finally-yield-clues-to-how-brains-learn-20210218/

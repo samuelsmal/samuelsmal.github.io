@@ -10,7 +10,7 @@ description: |
   Writing applications for distributed messaging queues is tricky, in this series I will expand on a
   couple of general thoughts and issues that arise naturally in this problem space. This time it's
   about time, where does it come from, how to use it and what issues come with it.
-field: software engineering
+field: Software Engineering
 ---
 
 ## Introduction

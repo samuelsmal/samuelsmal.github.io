@@ -37,7 +37,7 @@ Basically a list of disconnected items.
     <li class="post-list-item">
       <div class="left">
         <h3>
-          {{ field.name | capitalize }}
+          {{ field.name }}
         </h3>
       </div>
       <div class="right">

@@ -8,7 +8,7 @@ tags:
 description: |
   Kinda prompted by a junior dev that I am mentoring... Thought it would make sense to write it down.
   So here we are, Sam's way on how to communicate and write emails.
-field: communication
+field: Communication
 ---
 
 Professional (or private) communication is key to everything. How, what and when you communicate can
@@ -189,9 +189,9 @@ and friendly, while also not masking or talking around issues. If shit hits the 
 spade a spade." But do it nicely.
 On the same page, open or close the email in a personal way - if you can. Let's say you have been in
 close contact with an engineer of one of your vendors. Why not replace the "Best regards, Sam" with
-"Cheers, Sam"? If they have been sick, or way, why not ask about it? Receptive people will notice,
-and if they don't, who cares. Didn't cost you anything. The goal is to foster a relationship, they
-should trust you, and believe that you see them as a person.
+"Cheers, Sam"? If they have been on vacation or sick why not ask about it? Receptive people will
+notice, and if they don't, who cares. Didn't cost you anything. The goal is to foster a
+relationship, they should trust you, and believe that you see them as a person.
 
 
 <div class="epigraph rule">
