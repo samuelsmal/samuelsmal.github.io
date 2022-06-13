@@ -2,6 +2,7 @@
 layout: post
 title:  "Written communication, a.k.a. emails"
 date:   2022-03-05
+updated_on: 2022-06-12
 tags:
   - leadership
   - communication

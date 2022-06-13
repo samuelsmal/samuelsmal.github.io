@@ -12,6 +12,11 @@ layout: base
   <span class="published-on">
     Published on: {{ page.date | date: "%Y-%m-%d" }}
   </span>
+  {% if page.updated_on %}
+    <span class="updated-on">
+      Updated on: {{ page.updated_on | date: "%Y-%m-%d" }}
+    </span>
+  {% endif %}
 </header>
 <section class="post-content">
   {{ content }}

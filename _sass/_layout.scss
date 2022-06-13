@@ -80,6 +80,10 @@ html, body {
     .published-on {
       color: lighten(#111, 50%);
     }
+    .updated-on {
+      color: lighten(#111, 60%);
+      margin-left: 1rem;
+    }
   }
 
   .post-content {
