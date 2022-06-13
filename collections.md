@@ -13,7 +13,7 @@ Basically a list of disconnected items.
     <li class="post-list-item">
       <div class="right">
         <div class="post-title">
-          <a href="{{ collection.url }}">{{ collection.title }}</a>
+          <a href="{{ collection.url | relative_url }}">{{ collection.title }}</a>
         </div>
 
         {% if collection.description %}
@@ -44,7 +44,7 @@ Basically a list of disconnected items.
         {% assign posts_sorted = field.items | sort: "title" %}
         {% for post in posts_sorted %}
           <div class="post-title">
-            <a href="{{ post.url }}">{{ post.title }}</a>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </div>
 
           {% if post.description %}

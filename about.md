@@ -35,6 +35,15 @@ as an autodidact.
   {% endfor %}
 </p>
 
+## Why this blog? What is it about?
+
+Mostly because I wanted to write more. To train and practise writing and expressing thoughts. Maybe
+this comes from my time studying mathematics at the ETH. Only by writing down a proof you can be
+sure that you have fully understood it.
+
+Thus this blog / website is basically just for me. I write about things that interest me. There is
+no target audience.
+
 # Now
 
 Here I will detail a bit what I am currently out and about.

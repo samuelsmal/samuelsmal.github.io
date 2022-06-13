@@ -63,6 +63,7 @@ they come with.
 I don't even think we need to go all the way in and talk about these big models.
 <label for="sn-nlp-bias" class="margin-toggle sidenote-number"></label><input type="checkbox"
 id="sn-nlp-bias" class="margin-toggle"/><span class="sidenote">
+<a href="https://dl.acm.org/doi/pdf/10.1145/3442188.3445922">On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?, Bender et al., 2021</a><br>
 <a href="https://aclanthology.org/P19-1159.pdf">Mitigating Gender Bias in Natural Language
 Processing: Literature Review, Sun et al., 2019</a>
 </span>
