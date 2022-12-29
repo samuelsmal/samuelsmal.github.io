@@ -6,6 +6,8 @@ tags:
   - software engineering
   - dev-ops
   - letters to a younger me
+description: |
+  A love letter to version control and a (non-trivial) justification to use it.
 field: Software Engineering
 ---
 

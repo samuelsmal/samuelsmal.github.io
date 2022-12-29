@@ -98,6 +98,15 @@ html, body {
       }
     }
 
+    .principle {
+      blockquote::before {
+        content: "Principle " counters(rule-counter, ".") "";
+
+        font-style: normal;
+        font-weight: bold;
+      }
+    }
+
     .rule:not(.rule-extension) {
       blockquote::before {
         counter-increment: rule-counter;
