@@ -50,6 +50,7 @@ description: |
     that the **how** can be exchanged and can adapt to changes in the **what**.
 - Aim towards being replaceable. You don't get payed for your solutions but for the way to achieve
     them.
+- Code is buggy approximation of a wrong specification. Treat it as such.
 
 ## Quality
 
