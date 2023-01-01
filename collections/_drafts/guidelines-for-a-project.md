@@ -76,3 +76,31 @@ reduce possible naming collisions. Basically giving a `namespace`. Thus prefer `
     </p>
   </blockquote>
 </div>
+
+<div class="epigraph rule principle">
+  <blockquote>
+    <h4>Have a good hygine around structuring and naming conventions</h4>
+    <p>
+    </p>
+  </blockquote>
+</div>
+
+https://rogovoy.me/blog/no-architecture
+
+When you first learn the "best coding practices", somehow you assume that there is a clear line
+between good and bad architecture. You read or hear horror stories about unmaintainable projects
+with too much rotten spaghetti code. Inevitably, you end up working on one.
+
+Going fast or far.
+
+Mostly you want to go fast, at one point you run out of money. The cost of writing a good
+architecture, following guidelines, coming up with good names doesn't come for free. It costs time
+and brainpower. If you don't enforce it you will have to align with others on how to do it.
+Time is of the essence.
+
+Parento Principle, [Rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+
+Try to keep the mental barriers and abstractions to a minimum. If your program consists of a single
+file it will probably be easier to refactor and to implement new features. Which is exactly what you
+want at the beginning of a project. When you progress there is a sweet spot where you want to
+introduce multiple files.

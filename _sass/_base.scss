@@ -188,9 +188,20 @@ figure.fullwidth figcaption {
 }
 
 /* Links: replicate underline that clears descenders */
+a {
+    text-decoration-thickness: 2px;
+    cursor: pointer;
+    text-underline-offset: 3px;
+}
+
 a:link,
 a:visited {
     color: inherit;
+}
+
+a:hover {
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: none;
 }
 
 .no-tufte-underline:link {
