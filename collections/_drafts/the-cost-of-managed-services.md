@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Cost of Managed Services"
+title:  "Managed Services: Less Control"
 date:   2022-06-01
 tags:
   - enterprise architecture

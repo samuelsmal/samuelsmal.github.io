@@ -6,7 +6,6 @@ description: |
   Just a list of principles that I collected over the years. Some apply to programming, some to
   software engineering, some to general life.
 ---
-
 ## Fundamentals
 
 
@@ -16,6 +15,8 @@ description: |
 - Ownership is important, but don't get attached to your stuff.
 - Take breaks and think it through.
 - Expand your horizon, read papers and books, discuss, go to conferences, mingle.
+- Have some beauty in your life and in what you are doing.
+- Defining some goals and values is a great way to gain clarity.
 
 ## Interaction
 
