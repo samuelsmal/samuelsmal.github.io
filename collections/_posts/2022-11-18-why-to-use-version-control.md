@@ -123,3 +123,13 @@ downstream. Which makes testing, communication and planning easier.
 
 The way I see it there are two major reasons to use version control: 1) to track changes and 2) to
 ensure that changes flow properly through the whole system.
+
+## Further reading
+
+If `git` and version control is something that interests you I can recommend the following articles:
+
+- [Never merging back](https://gitster.livejournal.com/26540.html)
+- [A git workflow for agile teams](http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html)
+- [Distributed version control is here to stay, baby](https://www.joelonsoftware.com/2010/03/17/distributed-version-control-is-here-to-stay-baby/)
+  This is super old, but shines a bit of history on the subject.
+- [Linus Torvalds on what clean history means](https://www.mail-archive.com/dri-devel@lists.sourceforge.net/msg39091.html)

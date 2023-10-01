@@ -12,3 +12,4 @@ internal_data:
 Just a collection of food-for-thought, interesting books, websites, blog posts...
 
 - [How to build a low-tech website](https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website/)
+
