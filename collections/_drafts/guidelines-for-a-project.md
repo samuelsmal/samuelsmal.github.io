@@ -19,7 +19,7 @@ principles - my principles.
 
 <div class="epigraph rule principle">
   <blockquote>
-    <h4>The principle of least suprises</h4>
+    <h4>The principle of least surprises</h4>
     <p>
       Follow your own guidelines and rules, minimise possible friction.
     </p>
@@ -79,7 +79,7 @@ reduce possible naming collisions. Basically giving a `namespace`. Thus prefer `
 
 <div class="epigraph rule principle">
   <blockquote>
-    <h4>Have a good hygine around structuring and naming conventions</h4>
+    <h4>Have a good hygiene around structuring and naming conventions</h4>
     <p>
     </p>
   </blockquote>
