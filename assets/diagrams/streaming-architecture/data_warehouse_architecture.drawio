@@ -1,0 +1,25 @@
+<mxfile host="Electron" modified="2024-03-27T14:27:25.891Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="HOLrh-m7KLIlFD1y9F2V" version="23.1.5" type="device">
+  <diagram name="Page-1" id="xvStKJ340JL4EHCnNEG1">
+    <mxGraphModel dx="1406" dy="730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ce2u7RTiWteb5YWbG57F-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="Ce2u7RTiWteb5YWbG57F-2" target="Ce2u7RTiWteb5YWbG57F-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce2u7RTiWteb5YWbG57F-2" value="&lt;font face=&quot;Helvetica&quot;&gt;Source&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce2u7RTiWteb5YWbG57F-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="Ce2u7RTiWteb5YWbG57F-3" target="Ce2u7RTiWteb5YWbG57F-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce2u7RTiWteb5YWbG57F-3" value="Reconciled" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce2u7RTiWteb5YWbG57F-4" value="Serving" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="520" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

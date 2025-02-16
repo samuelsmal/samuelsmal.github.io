@@ -120,6 +120,14 @@ The classical layering in data warehouses are:
 4. Silver
 5. Gold
 
+
+Or
+
+1. Landing
+2. Unified
+3. Curated
+4. Serving
+
 ### Streaming
 
 #### Lambda architecture
@@ -144,5 +152,4 @@ aligned and kept in sync.
 - Not a clear layering system
 - Not a clear separation
     - At what cost?
-
 

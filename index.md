@@ -22,14 +22,6 @@ layout: base
           </p>
         </div>
         {% endif %}
-
-        <ul class="tag-list sans">
-          {% for tag in post.tags %}
-          <li class="tag-list-item">
-            {{ tag }}
-          </li>
-          {% endfor %}
-        </ul>
       </div>
     </li>
   {% endfor %}
