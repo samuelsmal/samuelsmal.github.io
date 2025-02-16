@@ -1,6 +1,8 @@
 ---
 title: now
 updated_on: 2025-02-16
+layout: base
+permalink: /now/
 ---
 
 # What I'm doing now
