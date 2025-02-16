@@ -1,4 +1,4 @@
-.PHONE: build
+.PHONY: build
 build:
 	bundle exec jekyll build
 
@@ -9,3 +9,7 @@ serveDrafts:
 .PHONY: serve
 serve:
 	bundle exec jekyll serve --livereload
+
+.PHONY: update
+update:
+	bundle update
