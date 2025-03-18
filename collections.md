@@ -3,8 +3,6 @@ layout: base
 permalink: /collections/
 ---
 
-
-
 ## Collections
 
 Basically a list of disconnected items.

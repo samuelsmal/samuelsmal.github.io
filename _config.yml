@@ -16,6 +16,8 @@ theme: minima
 plugins:
   - jekyll-feed
 
+markdown: kramdown
+
 collections_dir: collections
 collections:
   collections:
