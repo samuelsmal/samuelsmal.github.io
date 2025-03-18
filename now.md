@@ -10,16 +10,20 @@ permalink: /now/
 ## Consulting, aka earning money
 
 My day-job at [D-ONE](d-one.ai) exposes me to many challenges and roles. Most of the time I am a
-tech lead, sometimes I am just a data analyst, rarely I am a software engineer.
+tech lead, sometimes I am just a data analyst or a software engineer.
 
 Currently my time is divided into multiple projects:
 
 1. Building a real-time data processing system for a medical device manufacturer, which will allow
    them make low latency, in-process, agentic decisions based on sensor data in the future.
    Supervising the ML-part, coming up with a good architecture, writing a new cloud-native
-   guidelines for the client...
-2. Creating a 
-3. Supporting the company with acquiring new projects and clients. That means mostly creating
+   guidelines for the client... One of my favourite projects in a while.
+2. Creating a knowledge base for an international manufacturing giant.
+3. Reviewing and discussing the path towards an event-driven architecture with a Swiss health
+   insurance.
+4. Guiding a non-profit on their way to a software system that can scale with their needs and their
+   team.
+5. Supporting the company with acquiring new projects and clients. That means mostly creating
    architectures, answering RfPs, visiting and presenting the company at prospective clients.
 
 ## Fermenting food
@@ -30,12 +34,10 @@ source of inspiration for me. I did a lot of kombucha, sourdough bread (still go
 II. is now more than six years old!) and chili sauce. It is the chili sauce that I want to create a
 business around. Just for the kicks.
 
-
 ## Tea
 
 My parents gave me my love for tea. Since 2024 I am a member of the board of the [Swiss Tea
 Club](teeclub.ch). A highly prestigious job.
-
 
 ## Failing to found a startup
 
