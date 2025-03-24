@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "End-of-life"
-date: 2025-04-24
+date: 2025-03-24
 tags:
   - product ideas
 fields: Product ideas
