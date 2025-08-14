@@ -30,9 +30,17 @@ it combines certain features of a lakehouse but tries to fix
 ## Dimensional Modeling aka Star Schema
 
 
-Kimball introduced dimensional modeling in the mid-1990s, often using Oracle.
+In the 1990s data warehousing took off.
+
+[Ralph Kimball](https://en.wikipedia.org/wiki/Ralph_Kimball) introduced dimensional modeling, using 2NF approach can be described as a *top-down* approach if you like.
+
 He focused on star and snowflake schemas for quick queries.
-In the early 1990s, Inmon championed a normalized, 3NF data warehouse with Teradata for consistent enterprise-wide data.
+
+
+
+Around the same time
+
+In the early 1990s, [Inmon](https://en.wikipedia.org/wiki/Bill_Inmon) championed a normalized, 3NF data warehouse with Teradata for consistent enterprise-wide data.
 Around the early 2000s, Linstedt developed Data Vault 1.0 on SQL Server.
 It combined hubs, links, and satellites for better scalability and auditability but relied on natural or surrogate keys. This caused performance and scalability issues.
 Data Vault 2.0 introduced hash keys, strengthened standardization, and embraced agile methods and real-time processing.
@@ -93,6 +101,11 @@ Thus the
 
 ## Issue 2: Slow moving organisations
 
-Resulting in a new layer, some call it `carbon` or `platinum`
+- Related to "Where to put ML data"
+- Resulting in a new layer, some call it `carbon` or `platinum`
+
+## Issue 3: [Single version of the truth](https://en.wikipedia.org/wiki/Single_version_of_the_truth)
+
+- How to
 
 
