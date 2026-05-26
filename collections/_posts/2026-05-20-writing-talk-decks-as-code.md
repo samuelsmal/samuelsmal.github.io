@@ -8,6 +8,8 @@ tags:
   - typst
   - claude code
   - agentic engineering
+description: |
+    How I built my Current London 2026 deck with Typst, draw.io and a handful of Claude Code skills — slides as code, gitable end-to-end.
 ---
 
 As part of my journey with *Agentic Engineering*, and since colleagues have asked me, I thought I

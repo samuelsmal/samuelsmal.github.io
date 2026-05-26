@@ -6,6 +6,8 @@ tags:
   - infrastructure as code
   - helm
   - kubernetes
+description: |
+    Handling multi-environment configuration — and reaching the values Helm chart do not expose.
 ---
 
 # Introduction

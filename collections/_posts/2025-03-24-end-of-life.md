@@ -4,6 +4,8 @@ title:  "End-of-life"
 date: 2025-03-24
 tags:
   - product ideas
+description: |
+    A plea for somebody to finally build a proper cross-stack version and end-of-life management tool, before I lose another weekend to release notes.
 fields: Product ideas
 ---
 

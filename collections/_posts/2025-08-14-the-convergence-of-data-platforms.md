@@ -6,6 +6,8 @@ tags:
   - engineering
   - data platforms
   - prediction
+description: |
+    Why the 30-year split between operational and analytical data systems is about to collapse back into a single platform.
 ---
 
 # Introduction

@@ -6,6 +6,8 @@ tags:
   - consulting
   - software architecture
   - system architecuture
+description: |
+    Consulting war stories from clients whose locked-down networks turn even a `helm install` into an act of heroism.
 ---
 
 A reality in consulting is *faking it, until you make it*. Clients always want to work with people

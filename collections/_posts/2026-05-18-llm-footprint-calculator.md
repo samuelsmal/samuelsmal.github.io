@@ -6,6 +6,8 @@ tags:
   - ai
   - environment
   - tool
+description: |
+    An interactive calculator for the energy, water and CO₂ behind your daily LLM use — with honest caveats about how rough every input still is.
 ---
 
 <style>
