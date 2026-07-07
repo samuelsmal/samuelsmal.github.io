@@ -8,7 +8,6 @@ tags:
   - software architecture
   - system architecture
   - evolutionary systems
-mathjax: true
 ---
 
 Every modern, evolutionary software system exhibits a certain behaviour or functional pattern -

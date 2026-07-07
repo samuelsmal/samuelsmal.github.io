@@ -2,7 +2,7 @@
 layout: post
 title:  "Challenges in transitioning from batch to streaming"
 date:   2025-02-14
-mathjax: true
+math: true
 description: Challenges frequently seen when transitioning from batch to streaming.
 ---
 
@@ -72,7 +72,7 @@ seconds. Thus we can write it as such:
 |d|4 | 3 | 4 |
 |e|5 | 4 | 5 |
 
-Note that measurement $m_{c}$ arrived at timestamp $t_{c}=10$, instead of $3$.
+Note that measurement $$m_{c}$$ arrived at timestamp $$t_{c}=10$$, instead of $$3$$.
 
 If the task would be to give the average reading over the last three timestamps one would need to do
 some windowing, and define the time of window (e.g. tumbling or sliding), but it would not be

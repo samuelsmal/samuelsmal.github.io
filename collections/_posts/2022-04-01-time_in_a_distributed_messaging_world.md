@@ -5,7 +5,7 @@ date:   2022-06-01
 tags:
   - real-time data distribution
   - software engineering
-mathjax: True
+math: true
 description: |
   Writing applications for distributed messaging queues is tricky, in this series I will expand on a
   couple of general thoughts and issues that arise naturally in this problem space. This time it's
@@ -55,10 +55,10 @@ There a many different *types* of timestamps:
 </dl>
 
 As you can see the *type* of the timestamp depends on the user's viewpoint. For our sensor the
-$t_\text{observation}$ and $t_\text{processing}$ are the same. The $t_\text{publish}$ is the
+$$t_\text{observation}$$ and $$t_\text{processing}$$ are the same. The $$t_\text{publish}$$ is the
 timestamp when it sends the data off. It then arrives at the sink, in this case our Queue. The Queue
-than adds it's own $t_\text{arrival}$ and $t_\text{processing}$. Basically each new system adds a
-couple of timestamps to the message, the $t\text{event}$ however is very unique. It is the only
+than adds it's own $$t_\text{arrival}$$ and $$t_\text{processing}$$. Basically each new system adds a
+couple of timestamps to the message, the $$t\text{event}$$ however is very unique. It is the only
 timestamp that reflects the actual event. When did we measure this? When did it started to rain?
 
 ---
@@ -94,9 +94,9 @@ at this point in your pipeline at least three timestamps. The event-time of the 
 processing time of the sensor when the measurement was taken), the event-time of when your Queue
 received the measurement and the event-time of when our Processor is using the measurement.
 Canonically only the first timestamp is called event-time all the others are processing timestamps.
-Thus we name them: $t_{\text{event}}$, $t_{\text{queue arrival}}$ and $t_{\text{processor arrival}}$.
+Thus we name them: $$t_{\text{event}}$$, $$t_{\text{queue arrival}}$$ and $$t_{\text{processor arrival}}$$.
 
-Still which timestamp do you use? The most straight-forward answer would be to use $t_{event}$. This
+Still which timestamp do you use? The most straight-forward answer would be to use $$t_{event}$$. This
 should work for most cases, is easy to understand and is most cases reliable enough. Let's talk
 about the cases where it is not.
 
@@ -106,7 +106,7 @@ As you surely noticed, we are calculating an aggregate over a window. Right now 
 be of a certain duration. Thus, for every new measurement that comes in, we wait for 60 seconds, add
 all of the newly arriving measurements to a list and then calculate the median over this list. What
 happens if no further measurement arrives? Or if they arrive after the wait-time of 60 seconds but
-have a $t_{event}$ that is still in our window?
+have a $$t_{event}$$ that is still in our window?
 
 There is sadly no design solution for this issue, you can't completely design networking issues
 away. Sometimes it's not fully in your control, e.g. when you have multiple vendors from
@@ -118,7 +118,7 @@ can recalculate past or already closed windows your pipeline further down needs 
 this, your memory footprint is also much higher, as you now need to keep past windows in memory (or
 storage).
 
-Usually it's a combination of both approaches. Recalculate past windows for $x$-hours or $y$-seconds
+Usually it's a combination of both approaches. Recalculate past windows for $$x$$-hours or $$y$$-seconds
 depending on how much money you want to spend on machines and if new messages arrive after this
 deadline the window is fully closed.
 If this happens you're in deep shit anyways and maybe need to rethink your whole system design.
@@ -143,8 +143,8 @@ correct previous values. It now sends the following update message:
 If the sensor determines that a measurement is faulty, a corrected `value` will be sent, keeping the
 old `id` and `timestamp`. Let's assume that our Processor can recalculate the values for older
 windows if a message arrives out-of-window, and that we now get for some measurements more than one
-value.  How do we determine which to use? If we pick the one with later $t_\text{processor
-arrival}$ we do not cover out-of-order events, e.g. in case of a distributed system it can happen
+value.  How do we determine which to use? If we pick the one with later $$t_\text{processor
+arrival}$$ we do not cover out-of-order events, e.g. in case of a distributed system it can happen
 that the corrected value arrives before the original, faulty one.
 
 Thus you need to be able to restore order, or be able to determine which is the most-current value.
@@ -166,7 +166,7 @@ issues.
 
 As you can see the more we think about the issues that we are facing the more timestamps are
 required to fully debug your application. We started with one for each system, but had to expand the
-$t_\text{event}$ and add $t_\text{sensor send}$, I guess by now you can guess that in order to fully
+$$t_\text{event}$$ and add $$t_\text{sensor send}$$, I guess by now you can guess that in order to fully
 capture everything we need to add even more timestamps.
 Let's say you want to monitor the behaviour of your system and create an alert if it takes too long
 for some messages to flow through your system. For this you need to add for each subsystem that you
@@ -176,8 +176,8 @@ long it stays in transit from one subsystem to the other.
 To make things worse, this only works very well when you have a simple one-to-one transformation
 or map steps. Taking the aggregation over 60 seconds from above, which timestamp should you use for
 arrival and leave? As long as everybody that uses the system is in agreement the earliest and latest
-should give you sufficient information. But should it be the earliest of the $t_\text{event}$ or
-$t_\text{processor arrival}$? In my opinion this heavily depends on the use case at hand, to keep things
-simple I usually stick to $t_\text{event}$ for the definition of the window and the $t_\text{processor
-send}$ for the aggregate itself. In this case this aggregate can be viewed as a new *event*.
+should give you sufficient information. But should it be the earliest of the $$t_\text{event}$$ or
+$$t_\text{processor arrival}$$? In my opinion this heavily depends on the use case at hand, to keep things
+simple I usually stick to $$t_\text{event}$$ for the definition of the window and the $$t_\text{processor
+send}$$ for the aggregate itself. In this case this aggregate can be viewed as a new *event*.
 
