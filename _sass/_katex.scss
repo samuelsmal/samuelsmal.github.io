@@ -1,0 +1,20 @@
+/* KaTeX overrides
+ * KaTeX defaults .katex to font-size: 1.21em, which makes inline math larger
+ * than the surrounding body text and inflates line-height. Pin it to 1em so
+ * math matches the paragraph font size and lines stay evenly spaced.
+ *
+ * NOTE: katex.min.css is loaded AFTER this stylesheet (head.html), so a bare
+ * `.katex` selector would lose the source-order tie. The `body` prefix raises
+ * specificity so these win regardless of load order.
+ */
+body .katex {
+    font-size: 1em;
+}
+
+/* Display equations ($$ on their own paragraph): match paragraph rhythm and
+ * let wide formulas scroll horizontally instead of overflowing the column. */
+body .katex-display {
+    margin: 1.4rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
