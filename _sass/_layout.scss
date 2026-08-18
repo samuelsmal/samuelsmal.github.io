@@ -70,6 +70,14 @@ html, body {
   }
 }
 
+/* Base-layout pages (/now) carry their own freshness stamp. The .updated-on
+   rule further down is scoped to .post .post-header and does not reach here. */
+section > .updated-on {
+  display: block;
+  margin-top: 2.5rem;
+  color: lighten(#111, 60%);
+}
+
 .post-by-field-list {
   list-style: none;
   padding-left: 0;

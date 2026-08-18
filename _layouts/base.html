@@ -6,6 +6,13 @@
       {% include nav.html %}
       <section>
         {{ content }}
+        {%- comment -%}
+          Posts render their own stamp in .post-header, and they reach this layout
+          through `layout: post`, so restrict this to pages that use base directly.
+        {%- endcomment -%}
+        {% if page.updated_on and page.layout == 'base' %}
+          <span class="updated-on">Updated on: {{ page.updated_on | date: "%Y-%m-%d" }}</span>
+        {% endif %}
       </section>
       <div class="push"></div>
     </div>
