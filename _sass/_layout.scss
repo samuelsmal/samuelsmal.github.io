@@ -139,3 +139,89 @@ section > .updated-on {
 }
 
 
+
+/* Tag footer on a post, and the /tags index. Both stay in the site's
+   text-and-commas register — no chips, no badges. */
+
+.post-tags {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid lighten(#111, 80%);
+  font-size: 0.9rem;
+
+  .filed-under {
+    color: lighten(#111, 50%);
+    margin: 0 0 1.5rem 0;
+
+    a {
+      color: lighten(#111, 30%);
+    }
+  }
+
+  .tag-group {
+    margin-bottom: 1rem;
+  }
+
+  .tag-group-title {
+    color: lighten(#111, 50%);
+    margin: 0 0 0.2rem 0;
+  }
+
+  .tag-group-list {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 0.1rem;
+    }
+  }
+
+  .tag-group-date {
+    color: lighten(#111, 60%);
+    margin-right: 0.75rem;
+  }
+}
+
+.tag-section {
+  margin-bottom: 1.5rem;
+
+  .tag-heading {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.1rem;
+  }
+}
+
+.tag-post-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  li {
+    margin-bottom: 0.1rem;
+  }
+
+  .tag-post-date {
+    color: lighten(#111, 60%);
+    font-size: 0.9rem;
+    margin-right: 0.75rem;
+  }
+}
+
+.tag-index {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+
+  .tag-index-name {
+    color: lighten(#111, 40%);
+    font-size: 0.9rem;
+
+    &::after {
+      content: " —";
+    }
+  }
+}

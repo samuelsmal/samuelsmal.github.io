@@ -4,7 +4,6 @@ title:  "Evolutionary Software Systems"
 date:   2025-01-18
 tags:
   - software architecture
-  - system architecture
 ---
 
 I design a lot of software systems. And with a lot I mean roughly between 2-4 each year. Some get

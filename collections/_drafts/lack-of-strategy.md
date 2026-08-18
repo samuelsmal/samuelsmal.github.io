@@ -4,7 +4,7 @@ title:  "A lack of strategy"
 date:   "2025-08-10"
 tags:
   - culture
-  - engineering
+  - software engineering
 ---
 
 Lately, I found myself reviewing and auditing data platforms of three rather large Swiss insurance

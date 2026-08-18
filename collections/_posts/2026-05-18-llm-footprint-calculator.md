@@ -5,7 +5,7 @@ date:   "2026-05-18"
 tags:
   - ai
   - environment
-  - tool
+  - tooling
 description: |
     An interactive calculator for the energy, water and CO₂ behind your daily LLM use — with honest caveats about how rough every input still is.
 ---

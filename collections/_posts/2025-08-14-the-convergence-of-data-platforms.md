@@ -3,7 +3,7 @@ layout: post
 title:  "The Convergence of Data Platforms"
 date:   "2025-08-14"
 tags:
-  - engineering
+  - software engineering
   - data platforms
   - prediction
 description: |

@@ -5,7 +5,6 @@ date:   "2025-08-21"
 tags:
   - consulting
   - software architecture
-  - system architecuture
 description: |
     Consulting war stories from clients whose locked-down networks turn even a `helm install` into an act of heroism.
 ---

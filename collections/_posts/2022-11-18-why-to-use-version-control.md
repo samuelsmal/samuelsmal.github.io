@@ -4,7 +4,7 @@ title: Why to use version control
 date: 2022-11-18
 tags:
   - software engineering
-  - dev-ops
+  - devops
   - letters to a younger me
 description: |
   A love letter to version control and a (non-trivial) justification to use it.

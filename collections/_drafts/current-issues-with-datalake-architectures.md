@@ -3,7 +3,7 @@ layout: post
 title:  "Current Issues With Data Architectures"
 date: 2025-02-27
 tags:
-  - system architecture
+  - software architecture
   - data architecture
 fields:
 ---

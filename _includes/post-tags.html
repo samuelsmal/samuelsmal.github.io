@@ -1,0 +1,40 @@
+{%- comment -%}
+  Post footer: the post's own tags, then — grouped per tag — the other posts
+  carrying it. Grouping by tag rather than emitting one flat "related" list
+  means the reader sees *why* two posts are connected, and it keeps the Liquid
+  trivial: GitHub Pages ships no `intersection` filter, so a relevance-ranked
+  list would need a nested counting loop for no real gain at this corpus size.
+
+  `site.tags` only covers posts, so collection documents never appear here.
+{%- endcomment -%}
+
+{%- if page.tags and page.tags.size > 0 -%}
+{%- assign current_url = page.url -%}
+<footer class="post-tags sans">
+  <p class="filed-under">
+    Filed under:
+    <span class="tag-list">
+      {% for tag in page.tags %}
+        <span class="tag-list-item"><a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></span>
+      {% endfor %}
+    </span>
+  </p>
+
+  {%- for tag in page.tags -%}
+    {%- assign siblings = site.tags[tag] | where_exp: "p", "p.url != current_url" -%}
+    {%- if siblings.size > 0 -%}
+      <div class="tag-group">
+        <p class="tag-group-title">Also tagged {{ tag }}</p>
+        <ul class="tag-group-list">
+          {%- for sibling in siblings -%}
+            <li>
+              <span class="tag-group-date">{{ sibling.date | date: "%Y-%m-%d" }}</span>
+              <a href="{{ sibling.url | relative_url }}">{{ sibling.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</footer>
+{%- endif -%}

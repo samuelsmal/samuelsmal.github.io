@@ -36,6 +36,14 @@ This is a Jekyll static site using the Minima theme with a custom directory stru
 
 ### Content Guidelines
 - Posts use front matter with `layout: post`, `title`, `date`, and optional `tags`
+- Tags: keep the vocabulary tight — reuse an existing tag rather than coining a
+  near-synonym (`software engineering`, not `engineering`; `tooling`, not `tool`).
+  `/tags` (`tags.md`) splits them into threads (2+ posts) and single labels, and
+  every tag gets an anchor at `/tags/#<slugified-tag>`. `_includes/post-tags.html`
+  renders the footer of each post: a "Filed under" line linking to those anchors,
+  then one group per tag listing the other posts carrying it. Both are plain
+  Liquid over `site.tags` — the site builds on GitHub Pages, so no plugin-generated
+  tag pages (`jekyll-archives` and friends are unavailable).
 - Date format: "YYYY-MM-DD" 
 - Collections are configured in `_config.yml` with custom permalinks
 - Assets (images, PDFs, diagrams) go in `assets/` subdirectories

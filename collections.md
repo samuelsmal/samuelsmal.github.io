@@ -57,7 +57,7 @@ Basically a list of disconnected items.
           <ul class="tag-list sans">
             {% for tag in post.tags %}
             <li class="tag-list-item">
-              {{ tag }}
+              <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
             </li>
             {% endfor %}
           </ul>

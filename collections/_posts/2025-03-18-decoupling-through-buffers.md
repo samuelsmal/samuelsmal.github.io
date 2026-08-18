@@ -6,7 +6,6 @@ description: |
 date:   2025-03-18
 tags:
   - software architecture
-  - system architecture
   - evolutionary systems
 ---
 
