@@ -18,7 +18,21 @@
         { left: "\\[", right: "\\]", display: true },
         { left: "\\(", right: "\\)", display: false }
       ],
-      throwOnError: false
+      throwOnError: false,
+      // KaTeX has no siunitx support, so approximate the three commands we
+      // actually use. Typography only: upright roman units, thin space between
+      // number and unit. Unit names are written literally (`m/s`), not as
+      // siunitx control sequences (`\metre\per\second`).
+      //
+      // The thin space is explicit (`\,`) rather than implied by `\mathop`, and
+      // the body is wrapped in braces, so these stay usable as a bare sub- or
+      // superscript argument (`x_\unit{h}`). Without the braces the script
+      // grabs only the first token and the whole expression fails to parse.
+      macros: {
+        "\\unit": "{\\,\\mathrm{#1}}",
+        "\\qty": "{#1\\,\\mathrm{#2}}",
+        "\\per": "/"
+      }
     });
   });
 </script>

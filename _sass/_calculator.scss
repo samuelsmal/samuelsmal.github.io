@@ -1,0 +1,100 @@
+/* Interactive calculators, enabled per-page with `calculator: true` in front
+   matter. The markup contract lives in assets/js/calculator.js.
+
+   Everything here is drawn with currentColor and neutral greys, so it needs no
+   separate dark-scheme block. */
+
+/* A reader-editable value woven into the prose or into a table cell. Reads as
+   a filled-in blank rather than as a form control. */
+.calc-in {
+    font: inherit;
+    line-height: 1.15;
+    color: inherit;
+    text-align: right;
+    background: rgba(128, 128, 128, .12);
+    border: none;
+    border-bottom: 1.5px solid currentColor;
+    border-radius: 2px 2px 0 0;
+    padding: 0 .15em;
+    width: 4.5em;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+
+    /* The reader types a value; nudging one digit at a time with spinners is
+       useless at these magnitudes, and the arrows crowd the prose. */
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.calc-in::-webkit-outer-spin-button,
+.calc-in::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.calc-in:focus {
+    outline: 2px solid rgba(120, 160, 255, .6);
+    outline-offset: 1px;
+}
+
+/* Field width follows the `size` attribute, so a two-digit count does not sit
+   in the same box as a six-figure salary. The default suits ~6 characters. */
+.calc-in[size="2"] { width: 2.4em; }
+.calc-in[size="3"] { width: 3em; }
+.calc-in[size="4"] { width: 3.6em; }
+.calc-in[size="7"] { width: 5.4em; }
+
+select.calc-in {
+    width: auto;
+    text-align: left;
+    appearance: auto;
+    -moz-appearance: auto;
+}
+
+/* A computed value. Emphasised in prose; in a table it takes the weight of
+   its row, so a body cell does not shout and a total still does. */
+.calc-out {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+}
+
+td.calc-out,
+th.calc-out {
+    font-weight: inherit;
+}
+
+/* Keeps a value and its unit ("18.3 h") from breaking across two lines. */
+.nowrap {
+    white-space: nowrap;
+}
+
+/* A derivation woven into the prose, built from live inputs and outputs
+   instead of being handed to KaTeX. It stays inline, so it must not set its
+   own line-height: an inline box taller than the paragraph strut stretches
+   every line box it crosses, and only those lines, which reads as a gap in
+   the middle of a paragraph. Same reason `sub` below is pinned. */
+.calc-formula {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+}
+
+/* Default `vertical-align: sub` drops a full-height inline box below the
+   baseline. Zero line-height keeps it from counting towards the line box. */
+.calc-formula sub {
+    font-size: .7em;
+    line-height: 0;
+    vertical-align: -.3em;
+}
+
+/* Operators and units inside a derivation: upright and quiet, so the numbers
+   carry the line. */
+.calc-formula .op {
+    padding: 0 .15em;
+    font-style: normal;
+}
+
+.calc-formula .unit {
+    font-style: normal;
+    padding-left: .15em;
+}

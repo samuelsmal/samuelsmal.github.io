@@ -17,6 +17,14 @@ body {
     background-color: #fffff8;
     color: #111;
     max-width: 1400px;
+}
+
+/* The sidenote counter is reset on <html>, not <body>, on purpose: katex.min.css
+   ends with `body { counter-reset: katexEqnNo mmlEqnNo }` and loads after this
+   stylesheet, so a reset on body loses the cascade on every `math: true` page.
+   Without a counter in scope every .sidenote-number starts its own, and the
+   numbering restarts in each paragraph. */
+html {
     counter-reset: sidenote-counter;
 }
 
@@ -300,6 +308,97 @@ div.table-wrapper {
     font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
 }
 
+/* Same measure as body text, so a wrapped table lines up with the prose */
+section > div.table-wrapper {
+    width: 55%;
+    margin: 1.4rem 0 2rem;
+}
+
+/* ...unless marked fullwidth, which breaks out of the text measure to the same
+   90% as figure.fullwidth and pre.fullwidth. The class may sit on either the
+   table or the wrapper. */
+section > div.table-wrapper.fullwidth,
+section > div.table-wrapper:has(> table.fullwidth) {
+    width: 90%;
+    max-width: 90%;
+}
+
+/* The wrapper already carries the 90%; don't shrink the table again inside it */
+div.table-wrapper > table.fullwidth {
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+div.table-wrapper > table {
+    width: 100%;
+}
+
+th,
+td {
+    padding: 0.3rem 1rem 0.3rem 0;
+    text-align: left;
+    vertical-align: baseline;
+    font-weight: inherit;
+}
+
+th:last-child,
+td:last-child {
+    padding-right: 0;
+}
+
+thead th {
+    font-style: italic;
+    border-bottom: 1px solid rgba(17, 17, 17, .55);
+}
+
+/* Numeric columns: right-aligned, digits of equal width so they stack */
+th.num,
+td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    white-space: nowrap;
+}
+
+/* A row group heading spanning the full width, e.g. one costing option */
+th[scope="rowgroup"] {
+    font-weight: 600;
+    padding-top: 0.7rem;
+}
+
+/* Air between row groups instead of an empty spacer row */
+tbody + tbody > tr:first-child > * {
+    padding-top: 1.1rem;
+}
+
+tr.subtotal > * {
+    font-weight: 600;
+    border-top: 1px solid rgba(17, 17, 17, .2);
+}
+
+tfoot > tr > * {
+    font-weight: 600;
+    border-top: 1px solid rgba(17, 17, 17, .55);
+    padding-top: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    thead th,
+    tfoot > tr > * {
+        border-color: rgba(221, 221, 221, .55);
+    }
+
+    tr.subtotal > * {
+        border-top-color: rgba(221, 221, 221, .2);
+    }
+}
+
 .sans {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     letter-spacing: .03em;
@@ -449,6 +548,10 @@ label.margin-toggle:not(.sidenote-number) {
     div.table-wrapper,
     table {
         width: 85%;
+    }
+
+    section > div.table-wrapper {
+        width: 100%;
     }
 
     img {
