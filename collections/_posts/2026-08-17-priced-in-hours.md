@@ -7,6 +7,9 @@ tags:
   - buy vs build
   - self-hosting
   - agentic engineering
+description: |
+    Should you self-host or rent? The answer is a division: the monthly cost delta over an engineer's
+    hourly rate is how much time you get to run it yourself — and agentic engineering just moved that line.
 math: true
 calculator: true
 ---
