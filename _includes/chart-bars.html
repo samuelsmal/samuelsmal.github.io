@@ -1,0 +1,65 @@
+{%- comment -%}
+  Declarative stage/level bar chart, in the spirit of _includes/calculator.html:
+  the post carries data, never markup.
+
+  Front matter:
+
+    charts:
+      sdlc:
+        caption: "Optional prose under the chart (markdown)."
+        source: "Optional small-print provenance line."
+        levels:                       # optional, these are the defaults
+          high: "Noticeable gains"
+          mid:  "Modest gains"
+          none: "Essentially unchanged"
+        bars:
+          - label: "Ideate / explore"
+            note:  "prototyping, mockups"   # optional
+            level: high                     # high | mid | none
+
+  Body:
+
+    {% raw %}{% include chart-bars.html chart=page.charts.sdlc %}{% endraw %}
+
+  Levels are ordinal, not measured: three fixed fill heights, so the picture
+  cannot imply precision the underlying judgement does not have. Styling and the
+  ink ramp live in _sass/_chart.scss.
+{%- endcomment -%}
+
+{%- assign c = include.chart -%}
+{%- assign label_high = c.levels.high | default: "Noticeable gains" -%}
+{%- assign label_mid  = c.levels.mid  | default: "Modest gains" -%}
+{%- assign label_none = c.levels.none | default: "Essentially unchanged" -%}
+
+<figure class="chart-bars">
+  <div class="chart-bars__plot">
+    {%- for b in c.bars -%}
+    {%- case b.level -%}
+      {%- when 'high' -%}{%- assign lvl = label_high -%}
+      {%- when 'mid'  -%}{%- assign lvl = label_mid  -%}
+      {%- else        -%}{%- assign lvl = label_none -%}
+    {%- endcase -%}
+    <div class="chart-bars__col">
+      <div class="chart-bars__stage">{{ b.label }}</div>
+      <div class="chart-bars__track">
+        <div class="chart-bars__fill is-{{ b.level | default: 'none' }}"></div>
+      </div>
+      <div class="chart-bars__level">{{ lvl }}</div>
+      {%- if b.note %}<div class="chart-bars__note">{{ b.note }}</div>{% endif -%}
+    </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="chart-bars__legend">
+    <span class="chart-bars__key"><i class="chart-bars__swatch is-high"></i>{{ label_high }}</span>
+    <span class="chart-bars__key"><i class="chart-bars__swatch is-mid"></i>{{ label_mid }}</span>
+    <span class="chart-bars__key"><i class="chart-bars__swatch is-none"></i>{{ label_none }}</span>
+  </div>
+
+  {%- if c.caption or c.source %}
+  <figcaption>
+    {%- if c.caption %}{{ c.caption | markdownify }}{% endif -%}
+    {%- if c.source %}<span class="chart-bars__source">{{ c.source }}</span>{% endif -%}
+  </figcaption>
+  {%- endif -%}
+</figure>

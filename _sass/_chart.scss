@@ -1,0 +1,183 @@
+/* Stage/level bar charts, rendered from front-matter data by
+   _includes/chart-bars.html. No JavaScript, no images, no per-post markup.
+
+   Like _calculator.scss, everything is drawn with currentColor and neutral
+   greys, so there is no separate dark-scheme block: the ink follows the page.
+
+   The three levels are one ink at three strengths — a sequential ramp, since
+   the levels are ordinal (a lot / some / none), not unrelated categories.
+   Height double-encodes the same variable, which is what keeps the palest step
+   legible for colour-blind readers and in print. Adjacent steps separate at
+   ΔE ≈ 23 under every simulated deficiency; the palest fill sits under 3:1
+   against the page, so every bar also carries its level in words. */
+
+.chart-bars {
+    margin: 2rem 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Four shared rows — stage, plot, level, note — so that a stage label or a
+   level word wrapping to two lines cannot shove one column's baseline off the
+   line its neighbours sit on. Subgrid is what keeps the bars comparable. */
+.chart-bars__plot {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: auto 9rem auto auto;
+    gap: 0 1.6rem;
+    align-items: stretch;
+}
+
+/* Each stage feeds the next, so the columns get flow arrows in the gaps —
+   without them a reader sees seven unrelated categories instead of a pipeline. */
+.chart-bars__col {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    min-width: 0;
+}
+
+.chart-bars__col:not(:last-child) .chart-bars__track::after {
+    content: "→";
+    position: absolute;
+    right: -1.6rem;
+    width: 1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1;
+    opacity: .35;
+    pointer-events: none;
+}
+
+.chart-bars__stage {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    hyphens: auto;
+}
+
+.chart-bars__track {
+    position: relative;
+    height: 100%;
+    background: rgba(128, 128, 128, .12);
+    border-bottom: 1px solid currentColor;
+}
+
+.chart-bars__fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--fill, 20%);
+
+    /* Solid ink is the fallback where color-mix is unsupported: heavier than
+       intended, still correctly ordered by height. */
+    background: currentColor;
+    background: color-mix(in srgb, currentColor var(--ink, 20%), transparent);
+
+    /* A crisp top edge, so even the faintest fill has a readable data-end. */
+    border-top: 1.5px solid currentColor;
+    border-top-color: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.chart-bars__fill.is-high { --fill: 88%; --ink: 85%; }
+.chart-bars__fill.is-mid  { --fill: 48%; --ink: 45%; }
+.chart-bars__fill.is-none { --fill: 14%; --ink: 16%; }
+
+.chart-bars__level {
+    margin-top: .45rem;
+    font-size: .85rem;
+    line-height: 1.15;
+}
+
+.chart-bars__note {
+    font-size: .8rem;
+    line-height: 1.15;
+    font-style: italic;
+    opacity: .65;
+    margin-top: .15rem;
+}
+
+.chart-bars__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1.4rem;
+    margin-top: 1.2rem;
+    padding-top: .6rem;
+    border-top: 1px solid rgba(128, 128, 128, .35);
+    font-size: .85rem;
+}
+
+.chart-bars__key {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .4em;
+}
+
+.chart-bars__swatch {
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+    flex: none;
+    background: currentColor;
+    border: 1px solid currentColor;
+    border-color: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.chart-bars__swatch.is-high { background: color-mix(in srgb, currentColor 85%, transparent); }
+.chart-bars__swatch.is-mid  { background: color-mix(in srgb, currentColor 45%, transparent); }
+.chart-bars__swatch.is-none { background: color-mix(in srgb, currentColor 16%, transparent); }
+
+.chart-bars figcaption {
+    margin-top: .8rem;
+    font-size: .9rem;
+    line-height: 1.4;
+}
+
+.chart-bars figcaption p { margin: 0 0 .4rem; font-size: inherit; }
+
+.chart-bars__source {
+    display: block;
+    font-size: .8rem;
+    opacity: .6;
+}
+
+/* Seven columns of serif text do not survive a phone. Below the fold the chart
+   turns on its side: one row per stage, the fill growing to the right. */
+@media (max-width: 760px) {
+    .chart-bars__plot {
+        display: block;
+    }
+
+    .chart-bars__col {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .chart-bars__col:not(:last-child) .chart-bars__track::after { content: none; }
+
+    .chart-bars__stage {
+        margin-bottom: .25rem;
+        font-size: 1.1rem;
+    }
+
+    .chart-bars__track {
+        height: 1.5rem;
+        border-bottom: none;
+        border-left: 1px solid currentColor;
+    }
+
+    .chart-bars__fill {
+        right: auto;
+        top: 0;
+        width: var(--fill, 20%);
+        height: auto;
+        border-top: none;
+        border-right: 1.5px solid currentColor;
+        border-right-color: color-mix(in srgb, currentColor 65%, transparent);
+    }
+}

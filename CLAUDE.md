@@ -31,7 +31,7 @@ This is a Jekyll static site using the Minima theme with a custom directory stru
 
 ### Styling
 - `assets/css/styles.scss` - Main stylesheet that imports all SASS partials
-- `_sass/` - SASS partials (_base.scss, _layout.scss, _cv.scss, _katex.scss, _calculator.scss, _glitch.scss)
+- `_sass/` - SASS partials (_base.scss, _layout.scss, _cv.scss, _katex.scss, _calculator.scss, _chart.scss, _glitch.scss)
 - Uses custom Tufte-inspired typography and layout styles
 
 ### Content Guidelines
@@ -77,6 +77,38 @@ expression over those names, and the engine wires them up:
   renders. Use a `.calc-formula` block for a derivation with live values in it.
 - Styling lives in `_sass/_calculator.scss`. Full contract at the top of
   `assets/js/calculator.js`.
+
+### Charts
+
+`_includes/chart-bars.html` renders a stage/level bar chart from front-matter
+data — no opt-in flag, no JavaScript, no images, since it is CSS only.
+
+```yaml
+charts:
+  sdlc:
+    caption: "Optional prose under the chart (markdown)."
+    source: "Optional small-print provenance."
+    bars:
+      - label: "Review"
+        note:  "human-bottlenecked"
+        level: none        # high | mid | none
+```
+
+```liquid
+{% include chart-bars.html chart=page.charts.sdlc %}
+```
+
+- Levels are **ordinal, and only three**: fixed fill heights, so the picture
+  cannot imply precision a qualitative judgement does not have. If the data is
+  measured, this is the wrong component.
+- One ink at three strengths (`color-mix` on `currentColor`), so dark mode needs
+  no separate block and the ramp survives greyscale printing and colour
+  blindness. Height double-encodes the level.
+- The palest step falls below 3:1 against the page, so every bar prints its
+  level in words underneath — that text is required relief, not decoration.
+- Columns share four subgrid rows, which is what keeps the bars on one baseline
+  when a label wraps. Under 760px the chart turns on its side, one row per stage.
+- Level names are overridable per chart with a `levels:` map.
 
 `assets/js/llm-footprint.js` predates the engine and stays on its own code — its
 unit-scaling and range formatting are genuinely post-specific.
